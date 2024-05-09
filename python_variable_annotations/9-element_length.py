@@ -7,4 +7,8 @@ from typing import List, Tuple, Iterable, Sequence
 
 
 def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
+    """
+    argumen mixed list, int and floats
+    Return: sum as a float
+    """
     return [(i, len(i)) for i in lst]

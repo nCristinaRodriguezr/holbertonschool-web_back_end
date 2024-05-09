@@ -8,4 +8,8 @@ from typing import List
 
 
 def sum_list(input_list: List[float]) -> float:
+    """
+    argumen list, float
+    Return: list
+    """
     return sum(input_list)

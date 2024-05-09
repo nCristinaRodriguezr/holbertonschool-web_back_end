@@ -6,4 +6,8 @@ a float b as arguments and returns their sum as a float.
 
 
 def concat(a: str, b: str) -> str:
+    """
+    concat two str
+    Return: str
+    """
     return a + b

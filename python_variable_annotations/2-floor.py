@@ -7,4 +7,8 @@ import math
 
 
 def floor(n: float) -> int:
+    """
+    argumen floar
+    Return: int
+    """
     return math.floor(n)
