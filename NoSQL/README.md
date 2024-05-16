@@ -1,0 +1,1 @@
+I'am learning about NoSQL with MONGO
