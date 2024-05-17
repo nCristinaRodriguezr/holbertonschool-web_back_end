@@ -8,6 +8,6 @@ def schools_by_topic(mongo_collection, topic):
     """
     Buscar todas las escuelas que tienen el tema específico
     """
-    cursor = mongo_collection.find({"topics": {"$in": [topic]}})
-    schools = [school["name"] for school in cursor]
+    cursor = mongo_collection.find({"topics": topic})
+    schools = [school for school in cursor]
     return schools
