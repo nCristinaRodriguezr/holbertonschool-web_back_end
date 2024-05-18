@@ -17,6 +17,7 @@ def index_range(page, page_size):
     end_index = page * page_size
     return (start_index, end_index)
 
+
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -41,8 +42,8 @@ class Server:
         Devuelve una lista de filas correspondientes a la página especificada
         de acuerdo con los argumentos de paginación proporcionados.
         """
-        assert isinstance(page, int) and page > 0, "Page debe ser un entero mayor que 0"
-        assert isinstance(page_size, int) and page_size > 0, "Page_size debe ser un entero mayor que 0"
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
 
         start_index, end_index = index_range(page, page_size)
         dataset = self.dataset()
