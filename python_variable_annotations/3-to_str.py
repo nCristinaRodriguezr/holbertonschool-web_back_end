@@ -7,7 +7,7 @@ as argument and returns the string representation of the float.
 
 def to_str(n: float) -> str:
     """
-    argumen floar
+    argumen float
     Return: str
     """
     return str(n)

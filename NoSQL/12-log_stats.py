@@ -1,33 +1,27 @@
 #!/usr/bin/env python3
-"""
-a Python script that provides some stats about Nginx logs stored in MongoDB
-"""
-
-
+""" 12. Log stats """
 from pymongo import MongoClient
+
 
 if __name__ == "__main__":
     client = MongoClient('mongodb://127.0.0.1:27017')
-    db = client.logs
-    nginx_collection = db.nginx
 
-    # Verificar que la colección no esté vacía
-    n_documents = nginx_collection.count_documents({})
-    print(f'Total documents in collection: {n_documents}')
+    db_name = 'logs'
+    nginx_collection = 'nginx'
 
-    if n_documents == 0:
-        print("Collection nginx is empty")
-    else:
-        n_logs = nginx_collection.count_documents({})
-        print(f'{n_logs} logs')
+    collection = client[db_name][nginx_collection]
 
-        methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
-        print('Methods:')
-        for method in methods:
-            count = nginx_collection.count_documents({"method": method})
-            print(f'\tmethod {method}: {count}')
+    log_count = collection.count_documents({})
+    print(f"{log_count} logs")
 
-        status_check = nginx_collection.count_documents(
-            {"method": "GET", "path": "/status"}
+    methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
+    print('Methods:')
+    for method in methods:
+        count = collection.count_documents({"method": method})
+        print(f'\tmethod {method}: {count}')
+
+    status_check = collection.count_documents(
+        {"method": "GET", "path": "/status"}
         )
-        print(f'{status_check} status check')
+
+    print(f'{status_check} status check')
