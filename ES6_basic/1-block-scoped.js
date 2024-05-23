@@ -3,7 +3,7 @@ export default function taskBlock(trueOrFalse) {
   const task2 = true;
 
   if (trueOrFalse) {
-    //trampita
+    // trampita //
   }
 
   return [task, task2];
