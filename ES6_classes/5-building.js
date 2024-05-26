@@ -1,5 +1,14 @@
-export default class Building {
+class Building {
   constructor(sqft) {
+    if (
+      this.constructor !== Building
+        && typeof this.evacuationWarningMessage !== 'function'
+    ) {
+      throw Error(
+        'Class extending Building must override evacuationWarningMessage',
+      );
+    }
+
     this._sqft = sqft;
   }
 
@@ -8,17 +17,4 @@ export default class Building {
   }
 }
 
-class TestBuilding extends Building {
-  evacuationWarningMessage() {
-    throw new Error('Class extending Building must override evacuationWarningMessage');
-  }
-}
-
-const b = new Building(100);
-console.log(b);
-
-try {
-  new TestBuilding(200);
-} catch (err) {
-  console.log(err);
-}
+export default Building;
