@@ -1,31 +1,24 @@
 export default class Building {
-    constructor(sqft) {
-      this._sqft = sqft;
-    }
-  
-    get sqft() {
-      return this._sqft;
-    }
+  constructor(sqft) {
+    this._sqft = sqft;
+  }
 
-    evacuationWarningMessage() {
-        throw new Error("Class extending Building must override evacuationWarningMessage");
-    }
-}
-  
-class OfficeBuilding extends Building {
-    constructor(sqft, occupancy) {
-      super(sqft);
-      this._occupancy = occupancy;
-    }
-  
-    evacuationWarningMessage() {
-      return `Evacuate the building! Occupancy: ${this._occupancy}`;
-    }
+  get sqft() {
+    return this._sqft;
+  }
 }
 
-// Permitir la instancia de la clase Building
-Building.prototype.evacuationWarningMessage = function() {
-    throw new Error("Class extending Building must override evacuationWarningMessage");
-};
+class TestBuilding extends Building {
+  evacuationWarningMessage() {
+    throw new Error('Class extending Building must override evacuationWarningMessage');
+  }
+}
 
-export { Building, OfficeBuilding };
+const b = new Building(100);
+console.log(b);
+
+try {
+  new TestBuilding(200);
+} catch (err) {
+  console.log(err);
+}
