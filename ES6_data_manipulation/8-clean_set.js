@@ -1,6 +1,6 @@
 export default function cleanSet(set, startString) {
-  // Verifica si startString está definido y no está vacío
-  if (!startString) {
+  // Verifica si startString es una cadena no vacía
+  if (typeof startString !== 'string' || startString === '') {
     return '';
   }
 
